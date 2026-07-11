@@ -1,0 +1,85 @@
+myfavship-api/
+│
+├── prisma/
+│   ├── migrations/
+│   └── schema.prisma
+│
+├── src/
+│   ├── config/
+│   │   ├── auth.ts
+│   │   ├── database.ts
+│   │   └── upload.ts
+│   │
+│   ├── controllers/
+│   │   ├── auth.controller.ts
+│   │   ├── users.controller.ts
+│   │   ├── categories.controller.ts
+│   │   ├── works.controller.ts
+│   │   ├── characters.controller.ts
+│   │   ├── ships.controller.ts
+│   │   ├── votes.controller.ts
+│   │   └── rankings.controller.ts
+│   │
+│   ├── services/
+│   │   ├── auth.service.ts
+│   │   ├── users.service.ts
+│   │   ├── categories.service.ts
+│   │   ├── works.service.ts
+│   │   ├── characters.service.ts
+│   │   ├── ships.service.ts
+│   │   ├── votes.service.ts
+│   │   └── rankings.service.ts
+│   │
+│   ├── routes/
+│   │   ├── auth.routes.ts
+│   │   ├── users.routes.ts
+│   │   ├── categories.routes.ts
+│   │   ├── works.routes.ts
+│   │   ├── characters.routes.ts
+│   │   ├── ships.routes.ts
+│   │   ├── votes.routes.ts
+│   │   ├── rankings.routes.ts
+│   │   └── index.ts
+│   │
+│   ├── middlewares/
+│   │   ├── auth.middleware.ts
+│   │   ├── error.middleware.ts
+│   │   ├── upload.middleware.ts
+│   │   └── validate.middleware.ts
+│   │
+│   ├── validations/
+│   │   ├── auth.validation.ts
+│   │   ├── users.validation.ts
+│   │   ├── categories.validation.ts
+│   │   ├── works.validation.ts
+│   │   ├── characters.validation.ts
+│   │   ├── ships.validation.ts
+│   │   └── votes.validation.ts
+│   │
+│   ├── types/
+│   │   ├── auth.types.ts
+│   │   ├── user.types.ts
+│   │   ├── work.types.ts
+│   │   ├── character.types.ts
+│   │   ├── ship.types.ts
+│   │   └── vote.types.ts
+│   │
+│   ├── utils/
+│   │   ├── generateToken.ts
+│   │   ├── normalizeShip.ts
+│   │   └── AppError.ts
+│   │
+│   ├── app.ts
+│   └── server.ts
+│
+├── uploads/
+│   ├── characters/
+│   ├── ships/
+│   ├── works/
+│   └── defaults/
+│
+├── .env
+├── .gitignore
+├── package.json
+├── README.md
+└── tsconfig.json

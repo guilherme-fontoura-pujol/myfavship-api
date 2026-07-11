@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  UNKNOWN
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+  role     Role   @default(USER)
+  votes    Vote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Category {
+  id    String @id @default(uuid())
+  name  String @unique
+  works Work[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("categories")
+}
+
+model Work {
+  id            String  @id @default(uuid())
+  title         String
+  slug          String  @unique
+  description   String?
+  coverImageUrl String?
+  releaseYear   Int?
+  categoryId    String
+
+  category   Category    @relation(fields: [categoryId], references: [id])
+  characters Character[]
+  ships      Ship[]
+  votes      Vote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("works")
+}
+
+model Character {
+  id          String  @id @default(uuid())
+  name        String
+  slug        String  
+  imageUrl    String?
+  description String?
+  gender Gender @default(UNKNOWN)
+  isPlayable  Boolean @default(true)
+  workId      String
+
+  work           Work            @relation(fields: [workId], references: [id])
+  shipCharacters ShipCharacter[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([slug, workId])
+  @@unique([name, workId])
+  @@map("characters")
+}
+
+model Ship {
+  id     String @id @default(uuid())
+  workId String
+
+  name      String?
+  imageUrl  String?
+  isKnown   Boolean @default(false)
+
+  work       Work            @relation(fields: [workId], references: [id])
+  characters ShipCharacter[]
+  aliases    ShipAlias[]
+  votes      Vote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("ships")
+}
+
+model ShipAlias {
+  id     String @id @default(uuid())
+  name   String
+  shipId String
+
+  ship Ship @relation(fields: [shipId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([name, shipId])
+  @@map("ship_aliases")
+}
+
+model ShipCharacter {
+  id          String @id @default(uuid())
+  shipId      String
+  characterId String
+
+  ship      Ship      @relation(fields: [shipId], references: [id])
+  character Character @relation(fields: [characterId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([shipId, characterId])
+  @@map("ship_characters")
+}
+
+model Vote {
+  id     String @id @default(uuid())
+  userId String
+  workId String
+  shipId String
+
+  user User @relation(fields: [userId], references: [id])
+  work Work @relation(fields: [workId], references: [id])
+  ship Ship @relation(fields: [shipId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, workId])
+  @@map("votes")
+}
