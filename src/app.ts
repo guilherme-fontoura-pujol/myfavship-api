@@ -19,7 +19,23 @@ app.use(
   "/uploads",
   express.static(path.resolve(process.cwd(), "uploads"))
 );
-app.use(cors());
+const allowedOrigins = process.env.FRONTEND_URL
+  ? process.env.FRONTEND_URL.split(",").map((origin) => origin.trim())
+  : ["http://localhost:5173"];
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      // Permite ferramentas sem Origin, como Swagger, Postman e curl.
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Origem não permitida pelo CORS."));
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
