@@ -1689,6 +1689,300 @@ for (const cover of workCoverImages) {
   });
 }
 
+const characterImages = [
+  // Naruto
+  ["naruto", "naruto-uzumaki", "naruto-uzumaki.jpg"],
+  ["naruto", "hinata-hyuga", "hinata-hyuga.jpg"],
+
+  // Dragon Ball
+  ["dragon-ball", "son-goku", "son-goku.jpg"],
+  ["dragon-ball", "vegeta", "vegeta.jpg"],
+
+  // One Piece
+  ["one-piece", "monkey-d-luffy", "monkey-d-luffy.jpg"],
+  ["one-piece", "nami", "nami.jpg"],
+  ["one-piece", "roronoa-zoro", "roronoa-zoro.jpg"],
+  ["one-piece", "sanji", "sanji.jpg"],
+  ["one-piece", "nico-robin", "nico-robin.jpg"],
+  ["one-piece", "boa-hancock", "boa-hancock.jpg"],
+  ["one-piece", "usopp", "usopp.jpg"],
+  ["one-piece", "tony-tony-chopper", "tony-tony-chopper.jpg"],
+
+  // Bleach
+  ["bleach", "ichigo-kurosaki", "ichigo-kurosaki.jpg"],
+  ["bleach", "rukia-kuchiki", "rukia-kuchiki.jpg"],
+  ["bleach", "orihime-inoue", "orihime-inoue.jpg"],
+  ["bleach", "uryu-ishida", "uryu-ishida.jpg"],
+  ["bleach", "renji-abarai", "renji-abarai.jpg"],
+  ["bleach", "byakuya-kuchiki", "byakuya-kuchiki.jpg"],
+  ["bleach", "rangiku-matsumoto", "rangiku-matsumoto.jpg"],
+  ["bleach", "toshiro-hitsugaya", "toshiro-hitsugaya.jpg"],
+
+  // Pokémon
+  ["pokemon", "ash-ketchum", "ash-ketchum.jpg"],
+  ["pokemon", "misty", "misty.jpg"],
+  ["pokemon", "brock", "brock.jpg"],
+  ["pokemon", "may", "may.jpg"],
+  ["pokemon", "dawn", "dawn.jpg"],
+  ["pokemon", "serena", "serena.jpg"],
+  ["pokemon", "jessie", "jessie.jpg"],
+  ["pokemon", "james", "james.jpg"],
+
+  // Attack on Titan
+  ["attack-on-titan", "eren-yeager", "eren-yeager.jpg"],
+  ["attack-on-titan", "mikasa-ackerman", "mikasa-ackerman.jpg"],
+  ["attack-on-titan", "armin-arlert", "armin-arlert.jpg"],
+  ["attack-on-titan", "levi-ackerman", "levi-ackerman.jpg"],
+  ["attack-on-titan", "hange-zoe", "hange-zoe.jpg"],
+  ["attack-on-titan", "historia-reiss", "historia-reiss.jpg"],
+  ["attack-on-titan", "ymir", "ymir.jpg"],
+  ["attack-on-titan", "jean-kirstein", "jean-kirstein.jpg"],
+  ["attack-on-titan", "annie-leonhart", "annie-leonhart.jpg"],
+
+  // Fullmetal Alchemist: Brotherhood
+  [
+    "fullmetal-alchemist-brotherhood",
+    "edward-elric",
+    "edward-elric.jpg",
+  ],
+  [
+    "fullmetal-alchemist-brotherhood",
+    "winry-rockbell",
+    "winry-rockbell.jpg",
+  ],
+  [
+    "fullmetal-alchemist-brotherhood",
+    "alphonse-elric",
+    "alphonse-elric.jpg",
+  ],
+  [
+    "fullmetal-alchemist-brotherhood",
+    "may-chang",
+    "may-chang.jpg",
+  ],
+  [
+    "fullmetal-alchemist-brotherhood",
+    "roy-mustang",
+    "roy-mustang.jpg",
+  ],
+  [
+    "fullmetal-alchemist-brotherhood",
+    "riza-hawkeye",
+    "riza-hawkeye.jpg",
+  ],
+  [
+    "fullmetal-alchemist-brotherhood",
+    "ling-yao",
+    "ling-yao.jpg",
+  ],
+  [
+    "fullmetal-alchemist-brotherhood",
+    "lan-fan",
+    "lan-fan.jpg",
+  ],
+
+  // Arcane
+  ["arcane", "vi", "vi.jpg"],
+  ["arcane", "caitlyn-kiramman", "caitlyn-kiramman.jpg"],
+  ["arcane", "jinx", "jinx.jpg"],
+  ["arcane", "ekko", "ekko.jpg"],
+  ["arcane", "jayce-talis", "jayce-talis.jpg"],
+  ["arcane", "viktor", "viktor.jpg"],
+  ["arcane", "mel-medarda", "mel-medarda.jpg"],
+  ["arcane", "sevika", "sevika.jpg"],
+] as const;
+
+for (const [workSlug, characterSlug, filename] of characterImages) {
+  const work = await prisma.work.findUnique({
+    where: {
+      slug: workSlug,
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  if (!work) {
+    throw new Error(`Obra não encontrada: ${workSlug}`);
+  }
+
+  await prisma.character.update({
+    where: {
+      slug_workId: {
+        slug: characterSlug,
+        workId: work.id,
+      },
+    },
+    data: {
+      imageUrl:
+        `${frontendUrl}/images/characters/${workSlug}/${filename}`,
+    },
+  });
+}
+
+const fakeUserNames = [
+  "Ana Souza",
+  "Bruno Lima",
+  "Camila Rocha",
+  "Daniel Martins",
+  "Eduarda Alves",
+  "Felipe Costa",
+  "Gabriela Mendes",
+  "Henrique Silva",
+  "Isabela Freitas",
+  "João Ribeiro",
+  "Karina Oliveira",
+  "Lucas Ferreira",
+  "Mariana Gomes",
+  "Nicolas Santos",
+  "Olívia Cardoso",
+  "Pedro Carvalho",
+  "Rafaela Moreira",
+  "Samuel Nunes",
+  "Tatiane Barros",
+  "Vinícius Teixeira",
+];
+
+const fakeUsers = [];
+
+for (let index = 0; index < fakeUserNames.length; index += 1) {
+  const number = String(index + 1).padStart(2, "0");
+
+  const user = await prisma.user.upsert({
+    where: {
+      email: `user${number}@myfavship.com`,
+    },
+    update: {
+      name: fakeUserNames[index],
+      password: passwordHash,
+      role: Role.USER,
+    },
+    create: {
+      name: fakeUserNames[index],
+      email: `user${number}@myfavship.com`,
+      password: passwordHash,
+      role: Role.USER,
+    },
+  });
+
+  fakeUsers.push(user);
+}
+
+const voteOptions = [
+  {
+    workId: narutoWork.id,
+    ships: [naruhina],
+  },
+  {
+    workId: dragonBallWork.id,
+    ships: [gokuvegeta],
+  },
+  {
+    workId: onePieceWork.id,
+    ships: [
+      luffyNami,
+      zoroRobin,
+      sanjiNami,
+      luffyBoa,
+    ],
+  },
+  {
+    workId: bleachWork.id,
+    ships: [
+      ichigoOrihime,
+      ichigoRukia,
+      renjiRukia,
+      toshiroRangiku,
+    ],
+  },
+  {
+    workId: pokemonWork.id,
+    ships: [
+      ashMisty,
+      ashSerena,
+      ashDawn,
+      jessieJames,
+    ],
+  },
+  {
+    workId: attackOnTitanWork.id,
+    ships: [
+      erenMikasa,
+      arminAnnie,
+      historiaYmir,
+      leviHange,
+    ],
+  },
+  {
+    workId: fmabWork.id,
+    ships: [
+      edwardWinry,
+      royRiza,
+      alphonseMay,
+      lingLanFan,
+    ],
+  },
+  {
+    workId: arcaneWork.id,
+    ships: [
+      viCaitlyn,
+      jinxEkko,
+      jayceViktor,
+      jayceMel,
+    ],
+  },
+];
+
+let generatedVotes = 0;
+
+for (
+  let userIndex = 0;
+  userIndex < fakeUsers.length;
+  userIndex += 1
+) {
+  const user = fakeUsers[userIndex];
+
+  for (
+    let workIndex = 0;
+    workIndex < voteOptions.length;
+    workIndex += 1
+  ) {
+    const option = voteOptions[workIndex];
+
+    const shipIndex =
+      (userIndex + workIndex * 2) % option.ships.length;
+
+    const selectedShip = option.ships[shipIndex];
+
+    await prisma.vote.upsert({
+      where: {
+        userId_workId: {
+          userId: user.id,
+          workId: option.workId,
+        },
+      },
+      update: {
+        shipId: selectedShip.id,
+      },
+      create: {
+        userId: user.id,
+        workId: option.workId,
+        shipId: selectedShip.id,
+      },
+    });
+
+    generatedVotes += 1;
+  }
+}
+
+console.log(`Votos fictícios processados: ${generatedVotes}`);
+
+console.log(`Usuários fictícios processados: ${fakeUsers.length}`);
+
+console.log(
+  `Imagens de personagens atualizadas: ${characterImages.length}`
+);
+
 console.log(
   `Capas das obras atualizadas: ${workCoverImages.length}`
 );
