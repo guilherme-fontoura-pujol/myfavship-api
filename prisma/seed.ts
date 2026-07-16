@@ -341,6 +341,150 @@ const theLastOfUsWork = await prisma.work.upsert({
     },
   });
 
+  const sasuke = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "sasuke-uchiha",
+      workId: narutoWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Sasuke Uchiha",
+    slug: "sasuke-uchiha",
+    description: "Ninja do clã Uchiha e rival de Naruto.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: narutoWork.id,
+  },
+});
+
+const sakura = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "sakura-haruno",
+      workId: narutoWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Sakura Haruno",
+    slug: "sakura-haruno",
+    description: "Ninja médica e integrante do Time 7.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: narutoWork.id,
+  },
+});
+
+const kakashi = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "kakashi-hatake",
+      workId: narutoWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Kakashi Hatake",
+    slug: "kakashi-hatake",
+    description: "Sensei do Time 7 e ninja copiador.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: narutoWork.id,
+  },
+});
+
+const iruka = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "iruka-umino",
+      workId: narutoWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Iruka Umino",
+    slug: "iruka-umino",
+    description: "Professor da Academia Ninja e mentor de Naruto.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: narutoWork.id,
+  },
+});
+
+const shikamaru = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "shikamaru-nara",
+      workId: narutoWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Shikamaru Nara",
+    slug: "shikamaru-nara",
+    description: "Estrategista do clã Nara.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: narutoWork.id,
+  },
+});
+
+const temari = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "temari",
+      workId: narutoWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Temari",
+    slug: "temari",
+    description: "Kunoichi da Vila da Areia.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: narutoWork.id,
+  },
+});
+
+const gaara = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "gaara",
+      workId: narutoWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Gaara",
+    slug: "gaara",
+    description: "Kazekage da Vila da Areia.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: narutoWork.id,
+  },
+});
+
+const itachi = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "itachi-uchiha",
+      workId: narutoWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Itachi Uchiha",
+    slug: "itachi-uchiha",
+    description: "Ninja do clã Uchiha e irmão de Sasuke.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: narutoWork.id,
+  },
+});
+
   const goku = await prisma.character.upsert({
     where: {
       slug_workId: {
@@ -376,6 +520,402 @@ const theLastOfUsWork = await prisma.work.upsert({
       workId: dragonBallWork.id,
     },
   });
+
+  const bulma = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "bulma",
+      workId: dragonBallWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Bulma",
+    slug: "bulma",
+    description: "Cientista brilhante e fundadora da Corporação Cápsula.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: dragonBallWork.id,
+  },
+});
+
+const chichi = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "chi-chi",
+      workId: dragonBallWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Chi-Chi",
+    slug: "chi-chi",
+    description: "Lutadora e esposa de Goku.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: dragonBallWork.id,
+  },
+});
+
+const android18 = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "android-18",
+      workId: dragonBallWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Android 18",
+    slug: "android-18",
+    description: "Androide criada pelo Dr. Gero.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: dragonBallWork.id,
+  },
+});
+
+const krillin = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "krillin",
+      workId: dragonBallWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Krillin",
+    slug: "krillin",
+    description: "Artista marcial e amigo de longa data de Goku.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: dragonBallWork.id,
+  },
+});
+
+const gohan = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "son-gohan",
+      workId: dragonBallWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Son Gohan",
+    slug: "son-gohan",
+    description: "Filho mais velho de Goku.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: dragonBallWork.id,
+  },
+});
+
+const videl = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "videl",
+      workId: dragonBallWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Videl",
+    slug: "videl",
+    description: "Lutadora e filha de Mr. Satan.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: dragonBallWork.id,
+  },
+});
+
+const harry = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "harry-potter",
+      workId: harryPotterWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Harry Potter",
+    slug: "harry-potter",
+    description: "Bruxo conhecido como O Menino que Sobreviveu.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: harryPotterWork.id,
+  },
+});
+
+const hermione = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "hermione-granger",
+      workId: harryPotterWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Hermione Granger",
+    slug: "hermione-granger",
+    description: "Bruxa brilhante e integrante do trio principal.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: harryPotterWork.id,
+  },
+});
+
+const ron = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "ron-weasley",
+      workId: harryPotterWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Ron Weasley",
+    slug: "ron-weasley",
+    description: "Melhor amigo de Harry e membro da família Weasley.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: harryPotterWork.id,
+  },
+});
+
+const ginny = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "ginny-weasley",
+      workId: harryPotterWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Ginny Weasley",
+    slug: "ginny-weasley",
+    description: "Bruxa da família Weasley e jogadora de quadribol.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: harryPotterWork.id,
+  },
+});
+
+const draco = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "draco-malfoy",
+      workId: harryPotterWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Draco Malfoy",
+    slug: "draco-malfoy",
+    description: "Aluno da Sonserina e rival de Harry.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: harryPotterWork.id,
+  },
+});
+
+const luna = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "luna-lovegood",
+      workId: harryPotterWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Luna Lovegood",
+    slug: "luna-lovegood",
+    description: "Bruxa excêntrica da Corvinal.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: harryPotterWork.id,
+  },
+});
+
+const neville = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "neville-longbottom",
+      workId: harryPotterWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Neville Longbottom",
+    slug: "neville-longbottom",
+    description: "Aluno da Grifinória e integrante da Armada de Dumbledore.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: harryPotterWork.id,
+  },
+});
+
+const pansy = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "pansy-parkinson",
+      workId: harryPotterWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Pansy Parkinson",
+    slug: "pansy-parkinson",
+    description: "Aluna da Sonserina e colega de Draco.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: harryPotterWork.id,
+  },
+});
+
+const joel = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "joel-miller",
+      workId: theLastOfUsWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Joel Miller",
+    slug: "joel-miller",
+    description: "Sobrevivente encarregado de proteger Ellie.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: theLastOfUsWork.id,
+  },
+});
+
+const ellie = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "ellie-williams",
+      workId: theLastOfUsWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Ellie Williams",
+    slug: "ellie-williams",
+    description: "Jovem imune à infecção causada pelo Cordyceps.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: theLastOfUsWork.id,
+  },
+});
+
+const tess = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "tess-servopoulos",
+      workId: theLastOfUsWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Tess Servopoulos",
+    slug: "tess-servopoulos",
+    description: "Contrabandista e parceira de Joel.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: theLastOfUsWork.id,
+  },
+});
+
+const dina = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "dina",
+      workId: theLastOfUsWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Dina",
+    slug: "dina",
+    description: "Sobrevivente de Jackson e companheira de Ellie.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: theLastOfUsWork.id,
+  },
+});
+
+const jesse = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "jesse",
+      workId: theLastOfUsWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Jesse",
+    slug: "jesse",
+    description: "Patrulheiro de Jackson e amigo de Ellie.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: theLastOfUsWork.id,
+  },
+});
+
+const abby = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "abby-anderson",
+      workId: theLastOfUsWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Abby Anderson",
+    slug: "abby-anderson",
+    description: "Soldado ligada à Frente de Libertação de Washington.",
+    imageUrl: null,
+    gender: Gender.FEMALE,
+    workId: theLastOfUsWork.id,
+  },
+});
+
+const owen = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "owen-moore",
+      workId: theLastOfUsWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Owen Moore",
+    slug: "owen-moore",
+    description: "Integrante da Frente de Libertação de Washington.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: theLastOfUsWork.id,
+  },
+});
+
+const lev = await prisma.character.upsert({
+  where: {
+    slug_workId: {
+      slug: "lev",
+      workId: theLastOfUsWork.id,
+    },
+  },
+  update: {},
+  create: {
+    name: "Lev",
+    slug: "lev",
+    description: "Jovem serafita aliado de Abby.",
+    imageUrl: null,
+    gender: Gender.MALE,
+    workId: theLastOfUsWork.id,
+  },
+});
 
   const luffy = await prisma.character.upsert({
   where: {
@@ -980,6 +1520,38 @@ const annie = await prisma.character.upsert({
     aliases: ["Naruto x Hinata", "Naruto e Hinata"],
   });
 
+  const sasukeSakura = await ensureShip({
+  workId: narutoWork.id,
+  characterIds: [sasuke.id, sakura.id],
+  name: "SasuSaku",
+  isKnown: true,
+  aliases: ["Sasuke x Sakura"],
+});
+
+const narutoSasuke = await ensureShip({
+  workId: narutoWork.id,
+  characterIds: [naruto.id, sasuke.id],
+  name: "NaruSasu",
+  isKnown: true,
+  aliases: ["Naruto x Sasuke", "SasuNaru"],
+});
+
+const shikamaruTemari = await ensureShip({
+  workId: narutoWork.id,
+  characterIds: [shikamaru.id, temari.id],
+  name: "ShikaTema",
+  isKnown: true,
+  aliases: ["Shikamaru x Temari"],
+});
+
+const kakashiIruka = await ensureShip({
+  workId: narutoWork.id,
+  characterIds: [kakashi.id, iruka.id],
+  name: "KakaIru",
+  isKnown: true,
+  aliases: ["Kakashi x Iruka"],
+});
+
   const gokuvegeta = await ensureShip({
     workId: dragonBallWork.id,
     characterIds: [goku.id, vegeta.id],
@@ -988,6 +1560,102 @@ const annie = await prisma.character.upsert({
     isKnown: true,
     aliases: ["Goku x Vegeta", "KakaVege"],
   });
+
+const vegetaBulma = await ensureShip({
+  workId: dragonBallWork.id,
+  characterIds: [vegeta.id, bulma.id],
+  name: "VegeBul",
+  isKnown: true,
+  aliases: ["Vegeta x Bulma", "Vegebul"],
+});
+
+const gokuChichi = await ensureShip({
+  workId: dragonBallWork.id,
+  characterIds: [goku.id, chichi.id],
+  name: "GoChi",
+  isKnown: true,
+  aliases: ["Goku x Chi-Chi"],
+});
+
+const krillinAndroid18 = await ensureShip({
+  workId: dragonBallWork.id,
+  characterIds: [krillin.id, android18.id],
+  name: "KuriJuu",
+  isKnown: true,
+  aliases: ["Krillin x Android 18"],
+});
+
+const gohanVidel = await ensureShip({
+  workId: dragonBallWork.id,
+  characterIds: [gohan.id, videl.id],
+  name: "GoVi",
+  isKnown: true,
+  aliases: ["Gohan x Videl"],
+});
+
+const harryGinny = await ensureShip({
+  workId: harryPotterWork.id,
+  characterIds: [harry.id, ginny.id],
+  name: "Hinny",
+  isKnown: true,
+  aliases: ["Harry x Ginny"],
+});
+
+const ronHermione = await ensureShip({
+  workId: harryPotterWork.id,
+  characterIds: [ron.id, hermione.id],
+  name: "Romione",
+  isKnown: true,
+  aliases: ["Ron x Hermione"],
+});
+
+const harryDraco = await ensureShip({
+  workId: harryPotterWork.id,
+  characterIds: [harry.id, draco.id],
+  name: "Drarry",
+  isKnown: true,
+  aliases: ["Harry x Draco"],
+});
+
+const dracoHermione = await ensureShip({
+  workId: harryPotterWork.id,
+  characterIds: [draco.id, hermione.id],
+  name: "Dramione",
+  isKnown: true,
+  aliases: ["Draco x Hermione"],
+});
+
+const joelTess = await ensureShip({
+  workId: theLastOfUsWork.id,
+  characterIds: [joel.id, tess.id],
+  name: "JoelTess",
+  isKnown: true,
+  aliases: ["Joel x Tess"],
+});
+
+const ellieDina = await ensureShip({
+  workId: theLastOfUsWork.id,
+  characterIds: [ellie.id, dina.id],
+  name: "EllieDina",
+  isKnown: true,
+  aliases: ["Ellie x Dina"],
+});
+
+const abbyOwen = await ensureShip({
+  workId: theLastOfUsWork.id,
+  characterIds: [abby.id, owen.id],
+  name: "AbbyOwen",
+  isKnown: true,
+  aliases: ["Abby x Owen"],
+});
+
+const dinaJesse = await ensureShip({
+  workId: theLastOfUsWork.id,
+  characterIds: [dina.id, jesse.id],
+  name: "DinaJesse",
+  isKnown: true,
+  aliases: ["Dina x Jesse"],
+});
 
   const luffyNami = await ensureShip({
   workId: onePieceWork.id,
@@ -1126,6 +1794,7 @@ const leviHange = await ensureShip({
   isKnown: true,
   aliases: ["Levi x Hange"],
 });
+
 
   await prisma.vote.upsert({
     where: {
@@ -1693,10 +2362,24 @@ const characterImages = [
   // Naruto
   ["naruto", "naruto-uzumaki", "naruto-uzumaki.jpg"],
   ["naruto", "hinata-hyuga", "hinata-hyuga.jpg"],
+  ["naruto", "sasuke-uchiha", "sasuke-uchiha.jpg"],
+["naruto", "sakura-haruno", "sakura-haruno.jpg"],
+["naruto", "kakashi-hatake", "kakashi-hatake.jpg"],
+["naruto", "iruka-umino", "iruka-umino.jpg"],
+["naruto", "shikamaru-nara", "shikamaru-nara.jpg"],
+["naruto", "temari", "temari.jpg"],
+["naruto", "gaara", "gaara.jpg"],
+["naruto", "itachi-uchiha", "itachi-uchiha.jpg"],
 
   // Dragon Ball
   ["dragon-ball", "son-goku", "son-goku.jpg"],
   ["dragon-ball", "vegeta", "vegeta.jpg"],
+  ["dragon-ball", "bulma", "bulma.jpg"],
+  ["dragon-ball", "chi-chi", "chi-chi.jpg"],
+  ["dragon-ball", "android-18", "android-18.jpg"],
+  ["dragon-ball", "krillin", "krillin.jpg"],
+  ["dragon-ball", "son-gohan", "son-gohan.jpg"],
+  ["dragon-ball", "videl", "videl.jpg"],
 
   // One Piece
   ["one-piece", "monkey-d-luffy", "monkey-d-luffy.jpg"],
@@ -1790,6 +2473,26 @@ const characterImages = [
   ["arcane", "viktor", "viktor.jpg"],
   ["arcane", "mel-medarda", "mel-medarda.jpg"],
   ["arcane", "sevika", "sevika.jpg"],
+
+  // Harry Potter
+["harry-potter", "harry-potter", "harry-potter.jpg"],
+["harry-potter", "hermione-granger", "hermione-granger.jpg"],
+["harry-potter", "ron-weasley", "ron-weasley.jpg"],
+["harry-potter", "ginny-weasley", "ginny-weasley.jpg"],
+["harry-potter", "draco-malfoy", "draco-malfoy.jpg"],
+["harry-potter", "luna-lovegood", "luna-lovegood.jpg"],
+["harry-potter", "neville-longbottom", "neville-longbottom.jpg"],
+["harry-potter", "pansy-parkinson", "pansy-parkinson.jpg"],
+
+// The Last of Us
+["the-last-of-us", "joel-miller", "joel-miller.jpg"],
+["the-last-of-us", "ellie-williams", "ellie-williams.jpg"],
+["the-last-of-us", "tess-servopoulos", "tess-servopoulos.jpg"],
+["the-last-of-us", "dina", "dina.jpg"],
+["the-last-of-us", "jesse", "jesse.jpg"],
+["the-last-of-us", "abby-anderson", "abby-anderson.jpg"],
+["the-last-of-us", "owen-moore", "owen-moore.jpg"],
+["the-last-of-us", "lev", "lev.jpg"],
 ] as const;
 
 for (const [workSlug, characterSlug, filename] of characterImages) {
@@ -1870,13 +2573,25 @@ for (let index = 0; index < fakeUserNames.length; index += 1) {
 
 const voteOptions = [
   {
-    workId: narutoWork.id,
-    ships: [naruhina],
-  },
+  workId: narutoWork.id,
+  ships: [
+    naruhina,
+    sasukeSakura,
+    narutoSasuke,
+    shikamaruTemari,
+    kakashiIruka,
+  ],
+},
   {
-    workId: dragonBallWork.id,
-    ships: [gokuvegeta],
-  },
+  workId: dragonBallWork.id,
+  ships: [
+    gokuvegeta,
+    vegetaBulma,
+    gokuChichi,
+    krillinAndroid18,
+    gohanVidel,
+  ],
+},
   {
     workId: onePieceWork.id,
     ships: [
@@ -1931,6 +2646,24 @@ const voteOptions = [
       jayceMel,
     ],
   },
+  {
+  workId: harryPotterWork.id,
+  ships: [
+    harryGinny,
+    ronHermione,
+    harryDraco,
+    dracoHermione,
+  ],
+},
+{
+  workId: theLastOfUsWork.id,
+  ships: [
+    joelTess,
+    ellieDina,
+    abbyOwen,
+    dinaJesse,
+  ],
+},
 ];
 
 let generatedVotes = 0;
